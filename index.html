@@ -1448,6 +1448,164 @@ flex-shrink: 0;
 .toast-name { font-size: .85rem; font-weight: 700; color: var(--white); line-height: 1.2; }
 .toast-action { font-size: .75rem; color: var(--green); font-weight: 600; }
 .toast-loc { font-size: .7rem; color: var(--gray); margin-top: .1rem; }
+/* ── BOOT CAMP SECTION ── */
+.bootcamp-section {
+padding: 7rem 8vw;
+background: var(--dark);
+position: relative;
+}
+.bootcamp-section::before {
+content: '';
+position: absolute;
+left: 0; top: 0; bottom: 0;
+width: 4px;
+background: linear-gradient(180deg, var(--green), var(--green-dim));
+}
+.bootcamp-badge {
+display: inline-flex;
+align-items: center;
+gap: .55rem;
+background: rgba(255,59,59,.08);
+border: 1px solid rgba(255,59,59,.25);
+border-radius: 100px;
+padding: .35rem 1rem;
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 900;
+font-size: .78rem;
+letter-spacing: .15em;
+text-transform: uppercase;
+color: var(--red);
+margin-bottom: 1.5rem;
+}
+.bc-dot {
+width: 7px; height: 7px;
+border-radius: 50%;
+background: var(--red);
+flex-shrink: 0;
+animation: blink 1.2s ease-in-out infinite;
+}
+.bootcamp-section h2 {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(2.5rem, 6vw, 5rem);
+line-height: 1;
+max-width: 820px;
+margin-bottom: .6rem;
+}
+.bootcamp-section h2 em { font-style: normal; color: var(--green); }
+.bootcamp-lead {
+font-size: 1.02rem;
+color: var(--gray);
+max-width: 660px;
+line-height: 1.75;
+margin-bottom: 3.5rem;
+}
+.bootcamp-lead strong { color: var(--white); }
+.bootcamp-modules {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 1.2rem;
+margin-bottom: 3rem;
+}
+.bc-module {
+background: var(--card);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 1.8rem;
+position: relative;
+overflow: hidden;
+transition: transform .25s, border-color .25s;
+}
+.bc-module::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 2px;
+background: var(--green);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform .35s;
+}
+.bc-module:hover { transform: translateY(-4px); border-color: var(--green); }
+.bc-module:hover::before { transform: scaleX(1); }
+.bc-week {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: .72rem;
+font-weight: 700;
+letter-spacing: .22em;
+text-transform: uppercase;
+color: var(--green);
+margin-bottom: .4rem;
+}
+.bc-module h4 {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 1.15rem;
+font-weight: 900;
+text-transform: uppercase;
+letter-spacing: .04em;
+color: var(--white);
+margin-bottom: .55rem;
+}
+.bc-module p { font-size: .88rem; color: var(--gray); line-height: 1.65; }
+.bootcamp-bottom {
+display: grid;
+grid-template-columns: 1fr auto;
+gap: 3rem;
+align-items: center;
+background: var(--card);
+border: 1px solid var(--green);
+border-radius: 18px;
+padding: 2.8rem 3rem;
+box-shadow: 0 0 60px rgba(0,255,106,.08);
+position: relative;
+overflow: hidden;
+}
+.bootcamp-bottom::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: linear-gradient(90deg, var(--green), transparent);
+}
+@media (max-width: 700px) {
+.bootcamp-bottom { grid-template-columns: 1fr; gap: 2rem; }
+.bc-price-block { text-align: left; }
+}
+.bc-next-label {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: .78rem;
+font-weight: 700;
+letter-spacing: .2em;
+text-transform: uppercase;
+color: var(--green);
+margin-bottom: .5rem;
+}
+.bc-next-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(1.8rem, 3vw, 2.6rem);
+color: var(--white);
+line-height: 1.05;
+margin-bottom: .7rem;
+}
+.bc-next-desc { font-size: .92rem; color: var(--gray); line-height: 1.7; max-width: 520px; }
+.bc-price-block { text-align: center; }
+.bc-price-label {
+font-size: .72rem;
+text-transform: uppercase;
+letter-spacing: .2em;
+color: var(--green);
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+margin-bottom: .3rem;
+}
+.bc-price-num {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 4rem;
+color: var(--white);
+line-height: 1;
+}
+.bc-price-num sup { font-size: 1.8rem; vertical-align: super; }
+.bc-price-sub { font-size: .78rem; color: var(--gray); margin-top: .25rem; margin-bottom: .1rem; }
+
 /* ── 1-ON-1 COACHING SECTION ── */
 .coaching-section {
 padding: 7rem 8vw;
@@ -1914,11 +2072,56 @@ line-height: 1;
   <p class="lead">TOA gives you the exact framework — live, in real-time — so you stop guessing and start making calculated decisions built on education, not emotion.</p>
   <div class="features-grid">
     <div class="feature-card"><div class="feature-icon">📡</div><h3>Live Trading Sessions</h3><p>Trade alongside Niiko every week on Zoom. Watch real entries, real exits, and real reasoning — not edited highlight reels.</p></div>
-    <div class="feature-card"><div class="feature-icon">📚</div><h3>Boot Camp Curriculum</h3><p>From "what is an option?" to 0DTE strategies and volatility squeezes — we take you from zero to execution-ready.</p></div>
+    <div class="feature-card"><div class="feature-icon">📚</div><h3>TOA Boot Camp</h3><p>A separate intensive cohort program — 4 weeks from foundations to live execution. Enrollment opens in limited classes. <span style="color:var(--green);font-weight:700">See below for the next class.</span></p></div>
     <div class="feature-card"><div class="feature-icon">⚡</div><h3>TOA Volatility Squeeze</h3><p>Our custom multi-condition TradingView strategy built exclusively for members. Real signals, tested setups.</p></div>
     <div class="feature-card"><div class="feature-icon">🏆</div><h3>Trading Battles</h3><p>Compete live with other students in TOA Trading Battles — learn by doing with skin in the game.</p></div>
     <div class="feature-card"><div class="feature-icon">🧠</div><h3>Psychology-First Mindset</h3><p>Built by a master's-level psychologist. We teach you to manage fear, greed, and the behavioral patterns killing your PnL.</p></div>
     <div class="feature-card"><div class="feature-icon">💬</div><h3>Private Discord Community</h3><p>24/7 access to traders at every level — active alerts, trade breakdowns, and accountability daily.</p></div>
+  </div>
+</section>
+
+<!-- BOOT CAMP -->
+
+<section class="bootcamp-section reveal" id="bootcamp">
+  <div class="bootcamp-badge"><span class="bc-dot"></span> Next Enrollment — Stay Ready</div>
+  <h2>The TOA Boot Camp:<br><em>Zero to Execution</em></h2>
+  <p class="bootcamp-lead">While your membership keeps you sharp with live sessions, alerts, and community — Boot Camp is the <strong>intensive structured program</strong> that eliminates months of trial-and-error. Four focused weeks. Guided from every angle. You walk out trading with a real system.</p>
+
+  <div class="bootcamp-modules">
+    <div class="bc-module">
+      <div class="bc-week">Week 1</div>
+      <h4>Options Foundations</h4>
+      <p>What options actually are, how they're priced, what moves them, and the vocabulary every trader needs before placing a single trade. Zero confusion left over.</p>
+    </div>
+    <div class="bc-module">
+      <div class="bc-week">Week 2</div>
+      <h4>Chart Mastery + The Squeeze</h4>
+      <p>Reading charts clearly, identifying high-probability setups, and activating the TOA Volatility Squeeze — our custom TradingView strategy built to give members a real edge.</p>
+    </div>
+    <div class="bc-module">
+      <div class="bc-week">Week 3</div>
+      <h4>0DTE Live Strategies</h4>
+      <p>Same-day trading on SPX, RUT, and IWM. Entry rules, exit criteria, position sizing — Niiko walks through every decision live with real trades open on screen.</p>
+    </div>
+    <div class="bc-module">
+      <div class="bc-week">Week 4</div>
+      <h4>Psychology + Live Execution</h4>
+      <p>Trading with a plan, not emotion. Master the mindset framework that stops revenge trading, FOMO, and over-sizing — then execute a live trade with the group watching.</p>
+    </div>
+  </div>
+
+  <div class="bootcamp-bottom">
+    <div>
+      <div class="bc-next-label">📅 Next Class</div>
+      <div class="bc-next-title">Enrollment Opening Soon —<br>Get Your Spot First</div>
+      <p class="bc-next-desc">Boot Camp runs in limited cohorts so every student gets proper attention. TOA members get first access when enrollment opens — no waiting, no missing out. Join the community now and be first in line when the next class drops.</p>
+    </div>
+    <div class="bc-price-block">
+      <div class="bc-price-label">Boot Camp Price</div>
+      <div class="bc-price-num"><sup>$</sup>197</div>
+      <div class="bc-price-sub">one-time · per cohort</div>
+      <button class="plan-cta primary" style="margin-top:1.2rem; min-width:200px; border:none;" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')">Join to Get Notified →</button>
+    </div>
   </div>
 </section>
 
@@ -2015,7 +2218,7 @@ line-height: 1;
     <p class="value-stack-sub">Everything inside your TOA membership — and what you'd pay for it anywhere else.</p>
     <div class="value-rows">
       <div class="value-row"><span class="value-item">📡 Weekly Live Zoom Trading Sessions with Niiko</span><span class="value-price"><s>$299/mo</s></span></div>
-      <div class="value-row"><span class="value-item">📚 Full Boot Camp Curriculum (20+ modules, beginner → advanced)</span><span class="value-price"><s>$497</s></span></div>
+      <div class="value-row"><span class="value-item">📚 TOA Boot Camp — 4-week intensive cohort program</span><span class="value-price">Separate enrollment</span></div>
       <div class="value-row"><span class="value-item">⚡ TOA Volatility Squeeze — Custom TradingView Strategy</span><span class="value-price"><s>$199</s></span></div>
       <div class="value-row"><span class="value-item">💬 Private Discord Community + Real-Time Trade Alerts</span><span class="value-price"><s>$99/mo</s></span></div>
       <div class="value-row"><span class="value-item">🏆 Monthly TOA Trading Battles — Live Competitive Learning</span><span class="value-price"><s>$149/mo</s></span></div>
@@ -2067,14 +2270,14 @@ line-height: 1;
       <div class="plan-price"><sup>$</sup>99.99<span class="period">/mo</span></div>
       <div class="plan-desc">Every tool, every session, every strategy — one flat price. No tiers. No upsells. Just full access to the entire TOA experience.</div>
       <ul class="plan-features">
-        <li><span class="chk">✓</span> Full Boot Camp Curriculum (20+ modules)</li>
         <li><span class="chk">✓</span> Weekly Live Zoom Sessions with Niiko</li>
         <li><span class="chk">✓</span> TOA Trading Battles Access</li>
         <li><span class="chk">✓</span> 0DTE Strategy Modules — SPX, RUT, IWM</li>
         <li><span class="chk">✓</span> Real-Time Trade Alerts</li>
         <li><span class="chk">✓</span> Private Discord Community</li>
         <li><span class="chk">✓</span> TOA Volatility Squeeze (TradingView)</li>
-        <li><span class="chk">✓</span> Psychology-First Mindset Curriculum</li>
+        <li><span class="chk">✓</span> Psychology-First Mindset Sessions</li>
+        <li><span class="chk">✓</span> First Access to Boot Camp Enrollment</li>
         <li><span class="chk">✓</span> Founding Member Badge</li>
       </ul>
       <button class="plan-cta primary" style="margin-top:2rem;" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')">Join TOA — $99.99/mo →</button>
@@ -2354,7 +2557,7 @@ line-height: 1;
     <h3>Join Trading Options Academy</h3>
     <p>Full access to everything TOA. One price, no tiers, instant activation.</p>
     <div style="padding:1.2rem 1.4rem; border:1.5px solid var(--green); border-radius:8px; background:var(--green-glow); margin-bottom:1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.5rem;">
-      <span><strong style="color:var(--green)">TOA Membership</strong><span style="color:var(--gray); font-size:.85rem; display:block; margin-top:.15rem;">Full curriculum · Live sessions · Discord · Alerts</span></span>
+      <span><strong style="color:var(--green)">TOA Membership</strong><span style="color:var(--gray); font-size:.85rem; display:block; margin-top:.15rem;">Live sessions · Discord · Alerts · 0DTE strategies</span></span>
       <span style="font-family:'Bebas Neue',sans-serif; font-size:1.8rem; color:var(--white);">$99.99<span style="font-size:1rem;color:var(--gray)">/mo</span></span>
     </div>
     <div id="upsellSummary" style="display:none; background:var(--green-glow); border:1px solid var(--border); border-radius:8px; padding:.8rem 1.2rem; margin-bottom:1.2rem; font-size:.85rem; color:var(--green);"></div>
