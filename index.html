@@ -603,12 +603,12 @@ margin-bottom: .5rem;
 }
 .plan-price {
 font-family: ‘Bebas Neue’, sans-serif;
-font-size: 3.8rem;
+font-size: 3.2rem;
 line-height: 1;
 color: var(--white);
 }
-.plan-price sup { font-size: 1.8rem; vertical-align: super; }
-.plan-price .period { font-size: 1.1rem; color: var(--gray); }
+.plan-price sup { font-size: 1.5rem; vertical-align: super; }
+.plan-price .period { font-size: 1rem; color: var(--gray); }
 .plan-desc { font-size: .9rem; color: var(--gray); margin: .8rem 0 1.5rem; line-height: 1.5; }
 .plan-features { list-style: none; display: flex; flex-direction: column; gap: .75rem; flex: 1; }
 .plan-features li {
@@ -1201,12 +1201,12 @@ margin-bottom: .4rem;
 }
 .vyp-amount {
 font-family: 'Bebas Neue', sans-serif;
-font-size: 5rem;
+font-size: 4rem;
 color: var(--white);
 line-height: 1;
 }
-.vyp-amount sup { font-size: 2rem; vertical-align: super; }
-.vyp-amount span { font-size: 1.4rem; color: var(--gray); }
+.vyp-amount sup { font-size: 1.8rem; vertical-align: super; }
+.vyp-amount span { font-size: 1.3rem; color: var(--gray); }
 .vyp-save {
 display: inline-block;
 background: var(--green);
@@ -1448,6 +1448,350 @@ flex-shrink: 0;
 .toast-name { font-size: .85rem; font-weight: 700; color: var(--white); line-height: 1.2; }
 .toast-action { font-size: .75rem; color: var(--green); font-weight: 600; }
 .toast-loc { font-size: .7rem; color: var(--gray); margin-top: .1rem; }
+/* ── 1-ON-1 COACHING SECTION ── */
+.coaching-section {
+padding: 7rem 8vw;
+background: var(--black);
+position: relative;
+overflow: hidden;
+}
+.coaching-section::before {
+content: 'COACHING';
+position: absolute;
+left: -3%;
+top: 50%;
+transform: translateY(-50%);
+font-family: 'Bebas Neue', sans-serif;
+font-size: 18vw;
+color: rgba(0,255,106,.018);
+line-height: 1;
+pointer-events: none;
+user-select: none;
+}
+.coaching-section h2 {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(2.5rem, 6vw, 5rem);
+text-align: center;
+line-height: 1;
+margin-bottom: .5rem;
+}
+.coaching-section h2 em { font-style: normal; color: var(--green); }
+.coaching-section .coaching-sub {
+text-align: center;
+color: var(--gray);
+font-size: 1rem;
+max-width: 540px;
+margin: .8rem auto 3rem;
+line-height: 1.65;
+}
+.coaching-options {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1.8rem;
+max-width: 860px;
+margin: 0 auto 4rem;
+}
+@media (max-width: 680px) { .coaching-options { grid-template-columns: 1fr; } }
+.coaching-option {
+background: var(--card);
+border: 1px solid var(--border);
+border-radius: 18px;
+padding: 2.5rem 2rem;
+position: relative;
+transition: transform .25s, box-shadow .25s, border-color .25s;
+display: flex;
+flex-direction: column;
+}
+.coaching-option.featured {
+border-color: var(--green);
+box-shadow: 0 0 60px rgba(0,255,106,.14), inset 0 0 30px rgba(0,255,106,.03);
+}
+.coaching-option:hover { transform: translateY(-5px); }
+.coaching-option.featured:hover { box-shadow: 0 0 80px rgba(0,255,106,.22); }
+.co-tag {
+display: inline-block;
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 900;
+font-size: .72rem;
+letter-spacing: .15em;
+text-transform: uppercase;
+padding: .28rem .9rem;
+border-radius: 20px;
+margin-bottom: 1.2rem;
+}
+.coaching-option.featured .co-tag { background: var(--green); color: var(--black); }
+.coaching-option:not(.featured) .co-tag { background: rgba(0,255,106,.1); color: var(--green); border: 1px solid var(--border); }
+.co-duration {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 1rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: .12em;
+color: var(--gray);
+margin-bottom: .4rem;
+}
+.co-price {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 4rem;
+line-height: 1;
+color: var(--white);
+margin-bottom: .3rem;
+}
+.co-price sup { font-size: 2rem; vertical-align: super; }
+.co-per { font-size: .85rem; color: var(--gray); margin-bottom: 1.2rem; }
+.co-desc {
+font-size: .9rem;
+color: var(--gray);
+line-height: 1.65;
+margin-bottom: 1.5rem;
+}
+.co-features {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: .65rem;
+flex: 1;
+margin-bottom: 2rem;
+}
+.co-features li {
+display: flex;
+gap: .65rem;
+font-size: .88rem;
+color: var(--gray);
+align-items: flex-start;
+}
+.co-features li .chk { color: var(--green); flex-shrink: 0; }
+.co-cta {
+width: 100%;
+padding: .95rem;
+border-radius: 8px;
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 900;
+font-size: 1.05rem;
+letter-spacing: .1em;
+text-transform: uppercase;
+cursor: pointer;
+transition: all .2s;
+border: none;
+margin-top: auto;
+}
+.co-cta.primary { background: var(--green); color: var(--black); box-shadow: 0 0 25px rgba(0,255,106,.3); }
+.co-cta.primary:hover { background: #00ff8a; transform: translateY(-2px); box-shadow: 0 0 45px rgba(0,255,106,.5); }
+.co-cta.ghost { background: transparent; color: var(--green); border: 1.5px solid var(--green); }
+.co-cta.ghost:hover { background: var(--green-glow); }
+
+/* Staff cards */
+.coaches-divider {
+text-align: center;
+font-family: 'Barlow Condensed', sans-serif;
+font-size: .82rem;
+font-weight: 700;
+letter-spacing: .25em;
+text-transform: uppercase;
+color: var(--gray);
+margin-bottom: 2.5rem;
+position: relative;
+}
+.coaches-divider::before, .coaches-divider::after {
+content: '';
+position: absolute;
+top: 50%;
+width: calc(50% - 120px);
+height: 1px;
+background: var(--border);
+}
+.coaches-divider::before { left: 0; }
+.coaches-divider::after { right: 0; }
+.coaches-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 1.8rem;
+}
+.coach-card {
+border-radius: 18px;
+padding: 2.2rem;
+border: 1px solid;
+transition: transform .25s, box-shadow .25s;
+position: relative;
+overflow: hidden;
+}
+.coach-card::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+}
+.coach-card:hover { transform: translateY(-6px); }
+
+/* Niiko — Green */
+.coach-niiko { background: linear-gradient(135deg, var(--card) 0%, rgba(0,255,106,.04) 100%); border-color: rgba(0,255,106,.3); }
+.coach-niiko::before { background: linear-gradient(90deg, var(--green), transparent); }
+.coach-niiko:hover { box-shadow: 0 16px 50px rgba(0,255,106,.12); border-color: var(--green); }
+.coach-niiko .coach-avatar { border-color: var(--green); color: var(--green); background: rgba(0,255,106,.07); }
+.coach-niiko .coach-title { color: var(--green); }
+.coach-niiko .coach-tag { border-color: rgba(0,255,106,.3); color: var(--green); background: rgba(0,255,106,.07); }
+.coach-niiko .coach-book { border-color: var(--green); color: var(--green); }
+.coach-niiko .coach-book:hover { background: var(--green); color: var(--black); box-shadow: 0 0 30px rgba(0,255,106,.3); }
+
+/* Purp — Purple */
+.coach-purp { background: linear-gradient(135deg, var(--card) 0%, rgba(176,110,252,.04) 100%); border-color: rgba(176,110,252,.3); }
+.coach-purp::before { background: linear-gradient(90deg, #b06efc, transparent); }
+.coach-purp:hover { box-shadow: 0 16px 50px rgba(176,110,252,.12); border-color: #b06efc; }
+.coach-purp .coach-avatar { border-color: #b06efc; color: #b06efc; background: rgba(176,110,252,.07); }
+.coach-purp .coach-title { color: #b06efc; }
+.coach-purp .coach-tag { border-color: rgba(176,110,252,.3); color: #b06efc; background: rgba(176,110,252,.07); }
+.coach-purp .coach-book { border-color: #b06efc; color: #b06efc; }
+.coach-purp .coach-book:hover { background: #b06efc; color: white; box-shadow: 0 0 30px rgba(176,110,252,.3); }
+
+/* Ben10 — Orange */
+.coach-ben { background: linear-gradient(135deg, var(--card) 0%, rgba(255,123,43,.04) 100%); border-color: rgba(255,123,43,.3); }
+.coach-ben::before { background: linear-gradient(90deg, #ff7b2b, transparent); }
+.coach-ben:hover { box-shadow: 0 16px 50px rgba(255,123,43,.12); border-color: #ff7b2b; }
+.coach-ben .coach-avatar { border-color: #ff7b2b; color: #ff7b2b; background: rgba(255,123,43,.07); }
+.coach-ben .coach-title { color: #ff7b2b; }
+.coach-ben .coach-tag { border-color: rgba(255,123,43,.3); color: #ff7b2b; background: rgba(255,123,43,.07); }
+.coach-ben .coach-book { border-color: #ff7b2b; color: #ff7b2b; }
+.coach-ben .coach-book:hover { background: #ff7b2b; color: white; box-shadow: 0 0 30px rgba(255,123,43,.3); }
+
+.coach-avatar {
+width: 70px; height: 70px;
+border-radius: 50%;
+border: 2px solid;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Bebas Neue', sans-serif;
+font-size: 2rem;
+margin-bottom: 1.2rem;
+}
+.coach-name {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 2.2rem;
+color: var(--white);
+line-height: 1;
+margin-bottom: .15rem;
+}
+.coach-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: .78rem;
+font-weight: 700;
+letter-spacing: .18em;
+text-transform: uppercase;
+margin-bottom: 1rem;
+}
+.coach-tags {
+display: flex;
+flex-wrap: wrap;
+gap: .4rem;
+margin-bottom: 1.2rem;
+}
+.coach-tag {
+border-radius: 4px;
+padding: .2rem .6rem;
+font-size: .7rem;
+font-weight: 700;
+font-family: 'Barlow Condensed', sans-serif;
+letter-spacing: .05em;
+border: 1px solid;
+}
+.coach-bio {
+font-size: .88rem;
+color: var(--gray);
+line-height: 1.68;
+margin-bottom: 1.5rem;
+}
+.coach-bio strong { color: var(--white); }
+.coach-book {
+width: 100%;
+padding: .85rem;
+border-radius: 8px;
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 900;
+font-size: .95rem;
+letter-spacing: .1em;
+text-transform: uppercase;
+cursor: pointer;
+transition: all .2s;
+background: transparent;
+border: 1.5px solid;
+}
+
+/* ── ENROLLMENT PROGRESS BAR ── */
+.enroll-progress {
+background: var(--card);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 1.2rem 1.8rem;
+margin-bottom: 3rem;
+}
+.enroll-meta {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: .75rem;
+flex-wrap: wrap;
+gap: .5rem;
+}
+.enroll-text { font-size: .85rem; color: var(--gray); }
+.enroll-text strong { color: var(--white); }
+.enroll-pct {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.1rem;
+color: var(--green);
+}
+.enroll-track {
+height: 8px;
+background: rgba(0,0,0,.4);
+border-radius: 100px;
+overflow: hidden;
+}
+.enroll-fill {
+height: 100%;
+background: linear-gradient(90deg, var(--green-dim), var(--green));
+border-radius: 100px;
+width: 0%;
+transition: width 1.8s cubic-bezier(.22,.61,.36,1);
+box-shadow: 0 0 10px rgba(0,255,106,.4);
+}
+
+/* ── ANIMATED COUNTER ── */
+[data-count] { display: inline-block; }
+
+/* ── SECTION GLOW DIVIDERS ── */
+.glow-divider {
+height: 1px;
+background: linear-gradient(90deg, transparent 0%, var(--green) 50%, transparent 100%);
+opacity: .3;
+margin: 0;
+}
+
+/* ── RATING STRIP ── */
+.rating-strip {
+background: var(--dark);
+border-top: 1px solid var(--border);
+border-bottom: 1px solid var(--border);
+padding: 1.5rem 8vw;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 2.5rem;
+flex-wrap: wrap;
+}
+.rating-item {
+display: flex;
+align-items: center;
+gap: .6rem;
+font-size: .85rem;
+color: var(--gray);
+}
+.rating-stars { color: var(--green); font-size: 1rem; letter-spacing: -.05em; }
+.rating-num {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.4rem;
+color: var(--white);
+line-height: 1;
+}
+.rating-pipe { color: var(--border); }
 </style>
 
 </head>
@@ -1498,7 +1842,7 @@ flex-shrink: 0;
     <button class="btn-ghost" onclick="document.getElementById('proof').scrollIntoView({behavior:'smooth'})">See Real Results</button>
   </div>
   <div class="hero-proof">
-    <div class="proof-stat"><div class="num">500+</div><div class="label">Active Traders</div></div>
+    <div class="proof-stat"><div class="num"><span data-count="500">0</span>+</div><div class="label">Active Traders</div></div>
     <div class="proof-stat"><div class="num">$0</div><div class="label">Hidden Fees</div></div>
     <div class="proof-stat"><div class="num">LIVE</div><div class="label">Weekly Sessions</div></div>
     <div class="proof-stat"><div class="num">0DTE</div><div class="label">Strategies Taught</div></div>
@@ -1638,7 +1982,7 @@ flex-shrink: 0;
       <div class="tag">Most Popular</div>
       <h4>🔥 1-on-1 Strategy Call</h4>
       <p>30 minutes live with Niiko. Get your trading plan reviewed, your biggest questions answered, and a custom game plan built for your situation.</p>
-      <div class="upsell-price"><s>$197</s> $97</div>
+      <div class="upsell-price"><s>$199.99</s> $99.99</div>
       <button class="add-btn" onclick="toggleUpsell(this, 'call')">+ Add to My Order</button>
     </div>
     <div class="upsell-card">
@@ -1667,7 +2011,7 @@ flex-shrink: 0;
 <section class="value-stack-section reveal">
   <div class="value-stack-inner">
     <div class="section-eyebrow green" style="text-align:center">✦ What You're Getting</div>
-    <h2>Here's What <em>$97</em><br>Actually Buys You</h2>
+    <h2>Here's What <em>$99.99</em><br>Actually Buys You</h2>
     <p class="value-stack-sub">Every piece of a Pro Trader membership — and what you'd pay for it anywhere else.</p>
     <div class="value-rows">
       <div class="value-row"><span class="value-item">📡 Weekly Live Zoom Trading Sessions with Niiko</span><span class="value-price"><s>$299/mo</s></span></div>
@@ -1684,7 +2028,7 @@ flex-shrink: 0;
     </div>
     <div class="value-your-price">
       <div class="vyp-label">Your price today — Pro Trader</div>
-      <div class="vyp-amount"><sup>$</sup>97<span>/mo</span></div>
+      <div class="vyp-amount"><sup>$</sup>99.99<span>/mo</span></div>
       <div class="vyp-save">You save over $1,600 in value</div>
       <div class="vyp-cta">
         <button class="btn-primary" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')" style="font-size:1.1rem; padding:.9rem 2.5rem; margin-top:.5rem">Join Pro Trader Now →</button>
@@ -1699,6 +2043,14 @@ flex-shrink: 0;
   <h2>Pick Your Path</h2>
   <div class="urgency">⏳ Founding Member Rate Closes When Seats Fill — <span id="seatsLeft">11</span> Spots Remaining</div>
 
+  <div class="enroll-progress" id="enrollBar">
+    <div class="enroll-meta">
+      <span class="enroll-text"><strong>237</strong> of 500 founding member spots claimed</span>
+      <span class="enroll-pct">47%</span>
+    </div>
+    <div class="enroll-track"><div class="enroll-fill" id="enrollFill"></div></div>
+  </div>
+
   <div class="countdown-bar">
     <span class="countdown-label">🔥 Price Increase In:</span>
     <div class="countdown-digits">
@@ -1711,7 +2063,7 @@ flex-shrink: 0;
   <div class="plans-grid">
     <div class="plan-card">
       <div class="plan-name">Starter</div>
-      <div class="plan-price"><sup>$</sup>47<span class="period">/mo</span></div>
+      <div class="plan-price"><sup>$</sup>49.99<span class="period">/mo</span></div>
       <div class="plan-desc">Get your foundation and start trading with confidence.</div>
       <ul class="plan-features">
         <li><span class="chk">✓</span> Full Boot Camp Curriculum</li>
@@ -1724,7 +2076,7 @@ flex-shrink: 0;
     <div class="plan-card featured">
       <div class="plan-badge">🏆 Most Popular</div>
       <div class="plan-name">Pro Trader</div>
-      <div class="plan-price"><sup>$</sup>97<span class="period">/mo</span></div>
+      <div class="plan-price"><sup>$</sup>99.99<span class="period">/mo</span></div>
       <div class="plan-desc">Everything you need to trade live with the TOA community.</div>
       <ul class="plan-features">
         <li><span class="chk">✓</span> Everything in Starter</li>
@@ -1738,7 +2090,7 @@ flex-shrink: 0;
     </div>
     <div class="plan-card">
       <div class="plan-name">Elite</div>
-      <div class="plan-price"><sup>$</sup>197<span class="period">/mo</span></div>
+      <div class="plan-price"><sup>$</sup>199.99<span class="period">/mo</span></div>
       <div class="plan-desc">For serious traders who want direct access and maximum results.</div>
       <ul class="plan-features">
         <li><span class="chk">✓</span> Everything in Pro</li>
@@ -1752,6 +2104,118 @@ flex-shrink: 0;
     </div>
   </div>
 </section>
+
+<!-- 1-ON-1 COACHING -->
+
+<section class="coaching-section reveal" id="coaching">
+  <div class="section-eyebrow green" style="text-align:center">✦ Private Coaching</div>
+  <h2>Get Direct Time<br>With Our <em>Experts</em></h2>
+  <p class="coaching-sub">Sometimes you need more than group sessions. Book a private 1-on-1 with the TOA staff and get focused, personalized guidance built around <em>your</em> specific situation.</p>
+
+  <div class="coaching-options">
+    <div class="coaching-option">
+      <span class="co-tag">Deep Dive</span>
+      <div class="co-duration">60-Minute Session</div>
+      <div class="co-price"><sup>$</sup>99.99</div>
+      <div class="co-per">per session · 1 hour</div>
+      <div class="co-desc">A full hour of private, focused coaching. Review your trades, rebuild your strategy, and walk away with a custom action plan built for your account and your goals.</div>
+      <ul class="co-features">
+        <li><span class="chk">✓</span> Full trade history + portfolio review</li>
+        <li><span class="chk">✓</span> Custom strategy built for your account size</li>
+        <li><span class="chk">✓</span> Live chart analysis & setup identification</li>
+        <li><span class="chk">✓</span> Psychology + mindset coaching included</li>
+        <li><span class="chk">✓</span> Session recording provided</li>
+      </ul>
+      <button class="co-cta ghost" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')">Book 60-Min Session →</button>
+    </div>
+    <div class="coaching-option featured">
+      <span class="co-tag">Quick Win</span>
+      <div class="co-duration">15–20 Minute Focus Call</div>
+      <div class="co-price"><sup>$</sup>39.99</div>
+      <div class="co-per">per session · 15–20 min</div>
+      <div class="co-desc">Targeted and fast. Come with one question, one trade, or one concept you can't crack. Walk away with immediate clarity and a clear next step.</div>
+      <ul class="co-features">
+        <li><span class="chk">✓</span> Laser-focused on one topic</li>
+        <li><span class="chk">✓</span> Real-time chart or trade walkthrough</li>
+        <li><span class="chk">✓</span> Immediate actionable takeaway</li>
+        <li><span class="chk">✓</span> Perfect for active members between sessions</li>
+        <li><span class="chk">✓</span> No fluff, no filler — pure signal</li>
+      </ul>
+      <button class="co-cta primary" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')">Book 20-Min Call →</button>
+    </div>
+  </div>
+
+  <div class="coaches-divider">Choose your coach</div>
+
+  <div class="coaches-grid">
+
+    <!-- NIIKO -->
+    <div class="coach-card coach-niiko">
+      <div class="coach-avatar">N</div>
+      <div class="coach-name">Niiko</div>
+      <div class="coach-title">Founder · Head Mentor · Options Educator</div>
+      <div class="coach-tags">
+        <span class="coach-tag">Options Fundamentals</span>
+        <span class="coach-tag">0DTE Strategies</span>
+        <span class="coach-tag">Market News</span>
+        <span class="coach-tag">AI + Trading</span>
+        <span class="coach-tag">Behavioral Psychology</span>
+        <span class="coach-tag">SPX · RUT</span>
+      </div>
+      <p class="coach-bio">The man who built TOA. Book with Niiko when you need to <strong>understand options at the core level</strong> — how they're priced, how to read flow, and how to integrate market news and AI tools into your edge. Niiko simplifies what other educators overcomplicate. If something isn't clicking, one session with him fixes it.</p>
+      <button class="coach-book" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')">Book With Niiko →</button>
+    </div>
+
+    <!-- PURP -->
+    <div class="coach-card coach-purp">
+      <div class="coach-avatar">P</div>
+      <div class="coach-name">Purp</div>
+      <div class="coach-title">Charting Specialist · $IWM Queen</div>
+      <div class="coach-tags">
+        <span class="coach-tag">Technical Charting</span>
+        <span class="coach-tag">$IWM Setups</span>
+        <span class="coach-tag">Trade Discipline</span>
+        <span class="coach-tag">Position Trimming</span>
+        <span class="coach-tag">Entry Precision</span>
+        <span class="coach-tag">Options Basics</span>
+      </div>
+      <p class="coach-bio">Purp is TOA's charting authority and the undisputed <strong>$IWM queen</strong>. Nobody reads a chart cleaner or holds discipline tighter. Book with Purp when you want to stop overtrading, learn when to trim positions, and actually <strong>trust what the chart is telling you</strong> — instead of fighting it.</p>
+      <button class="coach-book" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')">Book With Purp →</button>
+    </div>
+
+    <!-- BEN10 -->
+    <div class="coach-card coach-ben">
+      <div class="coach-avatar">B</div>
+      <div class="coach-name">Ben10</div>
+      <div class="coach-title">Multi-Specialist · $LLY · $NFLX Expert</div>
+      <div class="coach-tags">
+        <span class="coach-tag">Technical Charting</span>
+        <span class="coach-tag">$IWM Setups</span>
+        <span class="coach-tag">Psychology</span>
+        <span class="coach-tag">Discipline</span>
+        <span class="coach-tag">$LLY Plays</span>
+        <span class="coach-tag">$NFLX Strategies</span>
+        <span class="coach-tag">Position Trimming</span>
+      </div>
+      <p class="coach-bio">Ben10 is the full package. Sharp on charts, deep on psychology, and with <strong>proprietary knowledge on $LLY and $NFLX setups</strong> that most traders don't know exist. If you're struggling with the mental side of trading — the revenge trades, the FOMO holds, the over-sizing — book Ben10. He's been there and built the system to beat it.</p>
+      <button class="coach-book" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')">Book With Ben10 →</button>
+    </div>
+
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- RATING STRIP -->
+<div class="rating-strip">
+  <div class="rating-item"><span class="rating-stars">★★★★★</span><span class="rating-num">4.9</span><span style="color:var(--gray);font-size:.8rem">&nbsp;avg rating</span></div>
+  <span class="rating-pipe">|</span>
+  <div class="rating-item"><span>500+ members trained</span></div>
+  <span class="rating-pipe">|</span>
+  <div class="rating-item"><span>Live sessions every week</span></div>
+  <span class="rating-pipe">|</span>
+  <div class="rating-item"><span>0DTE · SPX · RUT · IWM · LLY · NFLX</span></div>
+</div>
 
 <!-- TESTIMONIALS -->
 
@@ -1914,13 +2378,13 @@ flex-shrink: 0;
     <p>Select your membership tier and complete enrollment below. Your access is instant.</p>
     <div style="display:flex; flex-direction:column; gap:.8rem; margin-bottom:1.5rem;" id="checkoutOptions">
       <label style="display:flex; align-items:center; gap:.8rem; padding:1rem 1.2rem; border:1px solid var(--border); border-radius:8px; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--border)'">
-        <input type="radio" name="plan" value="starter" style="accent-color:var(--green)"> <span><strong>Starter — $47/mo</strong> <span style="color:var(--gray); font-size:.85rem;">Full curriculum + Discord</span></span>
+        <input type="radio" name="plan" value="starter" style="accent-color:var(--green)"> <span><strong>Starter — $49.99/mo</strong> <span style="color:var(--gray); font-size:.85rem;">Full curriculum + Discord</span></span>
       </label>
       <label style="display:flex; align-items:center; gap:.8rem; padding:1rem 1.2rem; border:1.5px solid var(--green); border-radius:8px; cursor:pointer; background: var(--green-glow);">
-        <input type="radio" name="plan" value="pro" checked style="accent-color:var(--green)"> <span><strong style="color:var(--green)">Pro Trader — $97/mo</strong> <span style="color:var(--gray); font-size:.85rem;">Live sessions + alerts + battles 🏆</span></span>
+        <input type="radio" name="plan" value="pro" checked style="accent-color:var(--green)"> <span><strong style="color:var(--green)">Pro Trader — $99.99/mo</strong> <span style="color:var(--gray); font-size:.85rem;">Live sessions + alerts + battles 🏆</span></span>
       </label>
       <label style="display:flex; align-items:center; gap:.8rem; padding:1rem 1.2rem; border:1px solid var(--border); border-radius:8px; cursor:pointer; transition: border-color .2s;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--border)'">
-        <input type="radio" name="plan" value="elite" style="accent-color:var(--green)"> <span><strong>Elite — $197/mo</strong> <span style="color:var(--gray); font-size:.85rem;">1-on-1 + scanner + full access</span></span>
+        <input type="radio" name="plan" value="elite" style="accent-color:var(--green)"> <span><strong>Elite — $199.99/mo</strong> <span style="color:var(--gray); font-size:.85rem;">1-on-1 + scanner + full access</span></span>
       </label>
     </div>
     <div id="upsellSummary" style="display:none; background:var(--green-glow); border:1px solid var(--border); border-radius:8px; padding:.8rem 1.2rem; margin-bottom:1.2rem; font-size:.85rem; color:var(--green);"></div>
@@ -1936,7 +2400,7 @@ flex-shrink: 0;
   <div class="sticky-bar-inner">
     <div class="sticky-left">
       <span class="sticky-live">🔴 Enrolling Now</span>
-      <span class="sticky-label">Pro Trader — <strong>$97/mo</strong></span>
+      <span class="sticky-label">Pro Trader — <strong>$99.99/mo</strong></span>
       <span class="sticky-spots-badge" id="stickySeatsLabel">11 spots left</span>
     </div>
     <button class="sticky-cta" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')">Join Now →</button>
@@ -2018,7 +2482,7 @@ flex-shrink: 0;
   function updateUpsellSummary() {
     const items = [];
     if (cart.bump || cart.playbook) items.push('0DTE Playbook (+$47)');
-    if (cart.call) items.push('1-on-1 Strategy Call (+$97)');
+    if (cart.call) items.push('1-on-1 Strategy Call (+$99.99)');
     if (cart.scanner) items.push('Volatility Scanner (+$67)');
     const el = document.getElementById('upsellSummary');
     if (items.length) {
@@ -2063,6 +2527,44 @@ flex-shrink: 0;
       if (e.target === overlay) overlay.classList.remove('open');
     });
   });
+
+  // ── ANIMATED COUNTERS ──
+  (function() {
+    const els = document.querySelectorAll('[data-count]');
+    if (!els.length) return;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseFloat(el.dataset.count);
+        const duration = 1600;
+        const start = performance.now();
+        function update(now) {
+          const pct = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - pct, 3);
+          el.textContent = Math.floor(target * ease).toLocaleString();
+          if (pct < 1) requestAnimationFrame(update);
+          else el.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(update);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    els.forEach(el => io.observe(el));
+  })();
+
+  // ── ENROLLMENT PROGRESS BAR ──
+  (function() {
+    const fill = document.getElementById('enrollFill');
+    if (!fill) return;
+    const io = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        setTimeout(() => { fill.style.width = '47%'; }, 200);
+        io.disconnect();
+      }
+    }, { threshold: 0.4 });
+    io.observe(document.getElementById('enrollBar'));
+  })();
 
   // ── STICKY BAR ──
   (function() {
