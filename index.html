@@ -1448,6 +1448,133 @@ flex-shrink: 0;
 .toast-name { font-size: .85rem; font-weight: 700; color: var(--white); line-height: 1.2; }
 .toast-action { font-size: .75rem; color: var(--green); font-weight: 600; }
 .toast-loc { font-size: .7rem; color: var(--gray); margin-top: .1rem; }
+/* ── REFERRAL PROGRAM ── */
+.referral-section {
+padding: 7rem 8vw;
+background: var(--dark);
+position: relative;
+overflow: hidden;
+}
+.referral-section::after {
+content: '25%';
+position: absolute;
+right: -1%;
+top: 50%;
+transform: translateY(-50%);
+font-family: 'Bebas Neue', sans-serif;
+font-size: 20vw;
+color: rgba(0,255,106,.025);
+line-height: 1;
+pointer-events: none;
+user-select: none;
+}
+.referral-section h2 {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(2.5rem, 6vw, 5rem);
+line-height: 1;
+margin-bottom: .5rem;
+}
+.referral-section h2 em { font-style: normal; color: var(--green); }
+.referral-lead {
+font-size: 1.05rem;
+color: var(--gray);
+max-width: 640px;
+line-height: 1.75;
+margin-bottom: 3rem;
+}
+.referral-lead strong { color: var(--white); }
+.ref-earnings {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 1.2rem;
+margin-bottom: 3rem;
+}
+.ref-earn-card {
+background: var(--card);
+border: 1px solid var(--border);
+border-radius: 14px;
+padding: 1.8rem 1.5rem;
+text-align: center;
+transition: border-color .25s, transform .25s;
+}
+.ref-earn-card:hover { border-color: var(--green); transform: translateY(-4px); }
+.ref-earn-count {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 3rem;
+color: var(--green);
+line-height: 1;
+margin-bottom: .2rem;
+}
+.ref-earn-label {
+font-size: .78rem;
+text-transform: uppercase;
+letter-spacing: .15em;
+color: var(--gray);
+font-family: 'Barlow Condensed', sans-serif;
+font-weight: 700;
+margin-bottom: .8rem;
+}
+.ref-earn-amount {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.8rem;
+color: var(--white);
+line-height: 1;
+}
+.ref-earn-period {
+font-size: .75rem;
+color: var(--gray);
+margin-top: .2rem;
+}
+.referral-perks {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 1rem;
+margin-bottom: 3rem;
+}
+.ref-perk {
+display: flex;
+align-items: flex-start;
+gap: .9rem;
+background: rgba(0,255,106,.04);
+border: 1px solid var(--border);
+border-radius: 10px;
+padding: 1.2rem;
+font-size: .92rem;
+color: var(--white);
+line-height: 1.5;
+}
+.ref-perk-icon { font-size: 1.2rem; flex-shrink: 0; }
+.ref-perk span { color: var(--gray); }
+.ref-perk strong { color: var(--white); }
+.referral-cta-block {
+background: var(--card);
+border: 1px solid var(--green);
+border-radius: 16px;
+padding: 2.5rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 2rem;
+flex-wrap: wrap;
+box-shadow: 0 0 50px rgba(0,255,106,.07);
+position: relative;
+overflow: hidden;
+}
+.referral-cta-block::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: linear-gradient(90deg, var(--green), transparent);
+}
+.ref-cta-text h4 {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 1.8rem;
+line-height: 1;
+margin-bottom: .4rem;
+}
+.ref-cta-text p { font-size: .92rem; color: var(--gray); line-height: 1.6; max-width: 460px; }
+
 /* ── BOOT CAMP SECTION ── */
 .bootcamp-section {
 padding: 7rem 8vw;
@@ -2438,50 +2565,65 @@ line-height: 1;
 <!-- YOUR FIRST 7 DAYS -->
 
 <section class="timeline-section reveal">
-  <div class="section-eyebrow green" style="text-align:center">✦ What Happens After You Join</div>
+  <div class="section-eyebrow green" style="text-align:center">✦ Getting Started</div>
   <h2>Your First <em>7 Days</em><br>Inside TOA</h2>
-  <p class="timeline-sub">No confusion. No figuring it out alone. Here's exactly what your first week looks like the moment you enroll.</p>
+  <p class="timeline-sub">From clicking the link to knowing exactly where to go — here's your step-by-step onboarding guide so nothing slips through the cracks.</p>
   <div class="timeline">
+
     <div class="tl-item">
-      <div class="tl-dot">⚡</div>
+      <div class="tl-dot">🔗</div>
       <div class="tl-content">
-        <div class="tl-time">Immediately after joining</div>
-        <h4>Instant Access — You're In</h4>
-        <p>Your Discord invite hits your inbox. You're welcomed by name. Members introduce themselves, ask your background, and someone who was exactly where you are six months ago will be the first to say "let's go." Community starts immediately.</p>
+        <div class="tl-time">Step 1 — Right Now</div>
+        <h4>Join Through the Official Whop Link</h4>
+        <p>Click the enrollment button on this page — it takes you directly to Whop, TOA's official checkout. Complete your info and subscribe. Takes about 2 minutes. <strong>Only join through this page.</strong> Once your payment is confirmed, a welcome email with your Discord invite lands in your inbox immediately.</p>
       </div>
     </div>
+
     <div class="tl-item">
-      <div class="tl-dot">📚</div>
+      <div class="tl-dot">💬</div>
       <div class="tl-content">
-        <div class="tl-time">Day 1</div>
-        <h4>Orientation + Boot Camp Module 1</h4>
-        <p>Niiko's welcome video tells you exactly how to get the most from your membership — what to focus on first, how the sessions work, how to use the Discord. Then you're into Module 1: options foundations built to actually stick.</p>
+        <div class="tl-time">Step 2 — Day 1</div>
+        <h4>Connect Your Discord</h4>
+        <p>Open your confirmation email and click the Discord invite link. Accept the invite, complete the quick server verification, and you're officially inside the TOA community. This is where everything happens — alerts, live session links, trade breakdowns, and conversations with 1,000+ active traders.</p>
       </div>
     </div>
+
+    <div class="tl-item">
+      <div class="tl-dot">👋</div>
+      <div class="tl-content">
+        <div class="tl-time">Step 3 — Day 1</div>
+        <h4>Say Hi in #introductions</h4>
+        <p>Don't sit in silence. Head straight to the <strong>#introductions</strong> channel and drop a quick message — your name, where you're from, your experience level, and what you're here to learn. Real members will welcome you immediately. This single step connects you to people at every level who've been exactly where you are.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot">🛡</div>
+      <div class="tl-content">
+        <div class="tl-time">Step 4 — Read This Carefully</div>
+        <h4>Watch Out for Imposters</h4>
+        <p><strong style="color:var(--red)">No TOA staff member — not Niiko, Purp, or Ben10 — will ever DM you first.</strong> Scammers target trading communities and will impersonate official staff to ask for money, access, or personal information. If you receive an unsolicited DM claiming to be TOA staff, block and report immediately. Only trust members with verified server roles inside the official Discord. When in doubt, ask in a public channel.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot">📖</div>
+      <div class="tl-content">
+        <div class="tl-time">Step 5 — Day 2</div>
+        <h4>Open the #education Section in Discord</h4>
+        <p>This is your home base. The <strong>#education</strong> channel is organized with everything you need to get started — foundational content, strategy overviews, and the full learning path. Read the pinned messages first. They tell you exactly what to consume and in what order. This is where new members see results the fastest.</p>
+      </div>
+    </div>
+
     <div class="tl-item">
       <div class="tl-dot">📈</div>
       <div class="tl-content">
-        <div class="tl-time">Day 3–4</div>
-        <h4>Your First Paper Trade + Community Feedback</h4>
-        <p>Using what you learned in modules 1–2, you place your first simulated trade and post it in Discord. Niiko and other members give you real feedback. You're not just watching — you're already doing.</p>
+        <div class="tl-time">Step 6 — Days 3–7</div>
+        <h4>Show Up, Engage, and Stay Consistent</h4>
+        <p>Check <strong>#announcements</strong> for live session times and community events. Jump into trade discussion channels. Ask questions freely — no judgment, ever. The members who grow fastest aren't the ones with the most experience. They're the ones who show up every day. By the end of your first week, you'll feel like you've been here for months.</p>
       </div>
     </div>
-    <div class="tl-item">
-      <div class="tl-dot">🔴</div>
-      <div class="tl-content">
-        <div class="tl-time">Day 5–7</div>
-        <h4>Your First Live Session with Niiko</h4>
-        <p>You're in the Zoom room. Niiko is trading real money in real-time — calling entries, explaining exits, managing risk out loud. You can ask questions live. This is the session where most people say: <em>"I finally get it."</em></p>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot">🏆</div>
-      <div class="tl-content">
-        <div class="tl-time">End of Month 1</div>
-        <h4>First Trading Battle + Measurable Progress</h4>
-        <p>You've completed the curriculum foundation, attended live sessions, and by now you have a framework. The Trading Battle is your first live-fire test — competing alongside other members with a strategy, not a guess.</p>
-      </div>
-    </div>
+
   </div>
 </section>
 
@@ -2499,6 +2641,56 @@ line-height: 1;
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What makes TOA different from other trading communities?<span class="ico">+</span></button><div class="faq-a">Three things: live real-money trading sessions (not back-tested theory), psychology-based curriculum from a master's-level educator, and a community that holds you accountable. Most groups flex — we teach.</div></div>
   </div>
 </div>
+
+<!-- REFERRAL PROGRAM -->
+
+<section class="referral-section reveal">
+  <div class="section-eyebrow green">✦ Earn With TOA</div>
+  <h2>Get Paid to Share<br><em>What Actually Works</em></h2>
+  <p class="referral-lead">Refer someone to TOA and earn <strong>25% of their monthly membership</strong> — every single month they stay active. You don't have to be a member. You don't need trading experience. You just need a link and someone who needs this community.</p>
+
+  <div class="ref-earnings">
+    <div class="ref-earn-card">
+      <div class="ref-earn-count">1</div>
+      <div class="ref-earn-label">referral</div>
+      <div class="ref-earn-amount">~$25</div>
+      <div class="ref-earn-period">every month they stay</div>
+    </div>
+    <div class="ref-earn-card">
+      <div class="ref-earn-count">5</div>
+      <div class="ref-earn-label">referrals</div>
+      <div class="ref-earn-amount">~$125</div>
+      <div class="ref-earn-period">per month, recurring</div>
+    </div>
+    <div class="ref-earn-card">
+      <div class="ref-earn-count">10</div>
+      <div class="ref-earn-label">referrals</div>
+      <div class="ref-earn-amount">~$250</div>
+      <div class="ref-earn-period">per month, just for sharing</div>
+    </div>
+    <div class="ref-earn-card">
+      <div class="ref-earn-count">20</div>
+      <div class="ref-earn-label">referrals</div>
+      <div class="ref-earn-amount">~$500</div>
+      <div class="ref-earn-period">per month, fully passive</div>
+    </div>
+  </div>
+
+  <div class="referral-perks">
+    <div class="ref-perk"><span class="ref-perk-icon">💰</span><div><strong>25% monthly commission</strong><br><span>Paid as long as your referral stays an active member. No expiration.</span></div></div>
+    <div class="ref-perk"><span class="ref-perk-icon">🌐</span><div><strong>You don't have to be a member</strong><br><span>Anyone can participate in the referral program — members or not.</span></div></div>
+    <div class="ref-perk"><span class="ref-perk-icon">🔁</span><div><strong>Fully recurring</strong><br><span>Not a one-time payout. Every month your referral renews, you get paid.</span></div></div>
+    <div class="ref-perk"><span class="ref-perk-icon">🚫</span><div><strong>No cap on referrals</strong><br><span>Refer 1 person or 100. The program has no ceiling on what you can earn.</span></div></div>
+  </div>
+
+  <div class="referral-cta-block">
+    <div class="ref-cta-text">
+      <h4>Ready to Earn?</h4>
+      <p>Join TOA to access your personal referral link — or reach out through the community to learn more about the affiliate program before joining.</p>
+    </div>
+    <button class="btn-primary" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')" style="white-space:nowrap; font-size:1rem; padding:.9rem 2rem;">Get My Referral Link →</button>
+  </div>
+</section>
 
 <!-- FINAL CTA -->
 
