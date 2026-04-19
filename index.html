@@ -2077,10 +2077,272 @@ color: var(--white);
 line-height: 1;
 }
 .rating-pipe { color: var(--border); }
+
+/* ── SCROLL PROGRESS BAR ── */
+#progressBar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--green), #00ff8a, var(--green));
+  background-size: 200%;
+  z-index: 9999;
+  box-shadow: 0 0 10px var(--green), 0 0 20px rgba(0,255,106,.4);
+  animation: shimmer 2s linear infinite;
+  transition: width .08s linear;
+}
+@keyframes shimmer { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
+
+/* ── CURSOR GLOW ── */
+#cursorGlow {
+  position: fixed;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,255,106,0.065) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  transition: opacity .4s;
+  opacity: 0;
+}
+
+/* ── RIPPLE ── */
+@keyframes rippleAnim { to { transform: scale(5); opacity: 0; } }
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: scale(0);
+  animation: rippleAnim .65s linear forwards;
+  pointer-events: none;
+}
+
+/* ── SECTION NAV DOTS ── */
+#sectionNav {
+  position: fixed;
+  right: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  z-index: 88;
+}
+@media (max-width: 900px) { #sectionNav { display: none; } }
+.snav-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(0,255,106,.2);
+  cursor: pointer;
+  border: none;
+  transition: background .25s, transform .25s;
+  position: relative;
+}
+.snav-dot.active { background: var(--green); transform: scale(1.6); }
+.snav-dot:hover { background: rgba(0,255,106,.6); transform: scale(1.35); }
+.snav-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-size: .68rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: .25rem .65rem;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+.snav-dot:hover::before { opacity: 1; }
+
+/* ── STAGGERED REVEAL ── */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: .1s; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: .18s; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: .26s; }
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: .34s; }
+.reveal-stagger.visible > *:nth-child(6) { transition-delay: .42s; }
+.reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
+
+/* ── DIRECTIONAL REVEALS ── */
+.reveal-left {
+  opacity: 0; transform: translateX(-36px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal-right {
+  opacity: 0; transform: translateX(36px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+.reveal-scale {
+  opacity: 0; transform: scale(.93);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+/* ── TESTIMONIAL CAROUSEL ── */
+.testi-carousel-wrap {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+  position: relative;
+}
+.testi-carousel-card {
+  background: var(--card);
+  border: 1.5px solid var(--green);
+  border-radius: 16px;
+  padding: 2.4rem 2.8rem;
+  box-shadow: 0 0 50px rgba(0,255,106,.12);
+  display: none;
+  animation: fadeCarousel .4s ease;
+}
+.testi-carousel-card.active { display: block; }
+@keyframes fadeCarousel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.testi-carousel-card .testi-stars { font-size: 1.1rem; margin-bottom: 1rem; color: var(--green); }
+.testi-carousel-card p { font-size: 1.05rem; line-height: 1.68; color: var(--white); margin-bottom: 1.4rem; }
+.testi-carousel-card p strong { color: var(--green); }
+.carousel-dots {
+  display: flex; gap: .45rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+.carousel-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(0,255,106,.2);
+  cursor: pointer; border: none;
+  transition: background .25s, transform .25s;
+}
+.carousel-dot.active { background: var(--green); transform: scale(1.5); }
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,255,106,.1);
+  border: 1px solid var(--border);
+  color: var(--green);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, transform .2s;
+  z-index: 2;
+}
+.carousel-nav:hover { background: rgba(0,255,106,.2); transform: translateY(-50%) scale(1.1); }
+.carousel-nav.prev { left: -48px; }
+.carousel-nav.next { right: -48px; }
+@media (max-width: 900px) { .carousel-nav { display: none; } }
+
+/* ── EARNINGS CALCULATOR ── */
+.earnings-calc-widget {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.2rem 2.5rem;
+  max-width: 620px;
+  margin: 2.5rem auto 0;
+  text-align: center;
+  transition: border-color .3s, box-shadow .3s;
+}
+.earnings-calc-widget:hover { border-color: var(--green); box-shadow: 0 0 40px rgba(0,255,106,.1); }
+.calc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: .85rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 1.4rem;
+}
+.calc-display {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4.5rem; color: var(--green);
+  line-height: 1;
+  transition: all .15s;
+  text-shadow: 0 0 30px rgba(0,255,106,.4);
+  margin-bottom: .3rem;
+}
+.calc-display-sub { color: var(--gray); font-size: .85rem; margin-bottom: 1.4rem; }
+.calc-slider-wrap { padding: 0 .5rem; }
+.calc-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 5px;
+  background: rgba(0,255,106,.15);
+  border-radius: 3px;
+  outline: none; cursor: pointer;
+  margin: .5rem 0;
+  position: relative;
+}
+.calc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px rgba(0,255,106,.7);
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+.calc-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 20px rgba(0,255,106,.9);
+}
+.calc-slider-labels {
+  display: flex; justify-content: space-between;
+  font-size: .72rem; color: var(--gray);
+  margin-top: .3rem; letter-spacing: .05em;
+}
+.calc-breakdown {
+  margin-top: 1.2rem;
+  font-size: .82rem; color: var(--gray);
+  line-height: 1.6;
+}
+.calc-breakdown span { color: var(--green); font-weight: 700; }
+
+/* ── PAIN ITEM HOVER ── */
+.pain-item { transition: transform .2s, background .2s, border-color .2s; }
+.pain-item:hover { transform: translateX(6px); background: rgba(255,59,59,.1); border-color: rgba(255,59,59,.3); }
+
+/* ── WIN CARD FLOAT ── */
+.win-card { transition: transform .3s, box-shadow .3s; cursor: default; }
+.win-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,255,106,.15); }
+
+/* ── MAGNETIC BUTTON WRAPPER ── */
+.mag-wrap { display: inline-block; }
+
+/* ── TICKER PAUSE ON HOVER ── */
+.ticker-track.paused { animation-play-state: paused; }
 </style>
 
 </head>
 <body>
+
+<!-- INTERACTIVE OVERLAYS -->
+<div id="progressBar"></div>
+<div id="cursorGlow"></div>
+
+<!-- SECTION NAV DOTS -->
+<nav id="sectionNav" aria-label="Section navigation">
+  <button class="snav-dot" data-target="hero" data-label="Top"></button>
+  <button class="snav-dot" data-target="wins" data-label="Wins"></button>
+  <button class="snav-dot" data-target="pain" data-label="The Problem"></button>
+  <button class="snav-dot" data-target="solution" data-label="The Fix"></button>
+  <button class="snav-dot" data-target="bootcamp" data-label="Boot Camp"></button>
+  <button class="snav-dot" data-target="pricing" data-label="Join"></button>
+  <button class="snav-dot" data-target="coaching" data-label="Coaching"></button>
+  <button class="snav-dot" data-target="testimonials" data-label="Results"></button>
+  <button class="snav-dot" data-target="referral" data-label="Earn"></button>
+</nav>
 
 <!-- TICKER -->
 
@@ -2113,7 +2375,7 @@ line-height: 1;
 
 <!-- HERO -->
 
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-eyebrow">Trading Options Academy</div>
@@ -2151,7 +2413,7 @@ line-height: 1;
 
 <!-- WINS SCROLLER -->
 
-<div class="wins-section" id="proof">
+<div class="wins-section" id="wins">
   <div class="wins-label">🏆 Real Student Wins — Updated Weekly</div>
   <div class="wins-track-wrap">
     <div class="wins-track" id="winsTrack">
@@ -2178,10 +2440,10 @@ line-height: 1;
 
 <!-- PAIN -->
 
-<section class="pain-section reveal">
+<section class="pain-section reveal" id="pain">
   <div class="section-eyebrow red">⚠ Sound familiar?</div>
   <h2>The Market Doesn't Care<br>That You're Trying.</h2>
-  <div class="pain-grid">
+  <div class="pain-grid reveal-stagger">
     <div class="pain-item"><div class="pain-icon">💸</div><p><strong>You bought an option and watched it go to zero</strong> — even when the stock moved in your direction.</p></div>
     <div class="pain-item"><div class="pain-icon">😤</div><p><strong>You've watched YouTube for months</strong> and still don't feel confident placing a trade.</p></div>
     <div class="pain-item"><div class="pain-icon">🎲</div><p><strong>Every trade feels like a gamble</strong> — no system, no edge, no consistency.</p></div>
@@ -2193,11 +2455,11 @@ line-height: 1;
 
 <!-- SOLUTION -->
 
-<section class="solution-section reveal">
+<section class="solution-section reveal" id="solution">
   <div class="section-eyebrow green">✦ The Fix</div>
   <h2>This Is What It Feels Like<br>to Trade With <em>Clarity.</em></h2>
   <p class="lead">TOA gives you the exact framework — live, in real-time — so you stop guessing and start making calculated decisions built on education, not emotion.</p>
-  <div class="features-grid">
+  <div class="features-grid reveal-stagger">
     <div class="feature-card"><div class="feature-icon">📡</div><h3>Live Trading Sessions</h3><p>Trade alongside Niiko every week on Zoom. Watch real entries, real exits, and real reasoning — not edited highlight reels.</p></div>
     <div class="feature-card"><div class="feature-icon">📚</div><h3>TOA Boot Camp</h3><p>A separate intensive cohort program — 4 weeks from foundations to live execution. Enrollment opens in limited classes. <span style="color:var(--green);font-weight:700">See below for the next class.</span></p></div>
     <div class="feature-card"><div class="feature-icon">⚡</div><h3>TOA Volatility Squeeze</h3><p>Our custom multi-condition TradingView strategy built exclusively for members. Real signals, tested setups.</p></div>
@@ -2526,8 +2788,49 @@ line-height: 1;
 
 <!-- TESTIMONIALS -->
 
-<section class="testimonials reveal">
+<section class="testimonials reveal" id="testimonials">
   <h2>The People Inside TOA Are <em>Winning.</em></h2>
+
+  <!-- FEATURED TESTIMONIAL CAROUSEL -->
+  <div class="testi-carousel-wrap">
+    <button class="carousel-nav prev" id="carouselPrev">‹</button>
+    <button class="carousel-nav next" id="carouselNext">›</button>
+
+    <div class="testi-carousel-card active" data-idx="0">
+      <div class="testi-stars">★★★★★</div>
+      <p>Before TOA I was watching my account bleed every month. <strong>First live session I attended changed everything.</strong> Niiko explained in 20 minutes what I couldn't figure out in a year alone.</p>
+      <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Marcus T.</div><div class="testi-role">TOA Member · Miami, FL</div></div></div>
+    </div>
+    <div class="testi-carousel-card" data-idx="1">
+      <div class="testi-stars">★★★★★</div>
+      <p>I work full time and thought options trading wasn't for me. TOA taught me to <strong>identify setups in under 10 minutes</strong> before I start my shift. I've added $1,400 to my account this month alone.</p>
+      <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">Destiny A.</div><div class="testi-role">TOA Member · Atlanta, GA</div></div></div>
+    </div>
+    <div class="testi-carousel-card" data-idx="2">
+      <div class="testi-stars">★★★★★</div>
+      <p>Turned $500 into $3,200 in my first 30 days of applying the TOA framework. <strong>No luck. No gambling. Pure strategy.</strong> Results may vary but the education is real.</p>
+      <div class="testi-author"><div class="testi-avatar">J</div><div><div class="testi-name">Jerome K.</div><div class="testi-role">TOA Member · Houston, TX</div></div></div>
+    </div>
+    <div class="testi-carousel-card" data-idx="3">
+      <div class="testi-stars">★★★★★</div>
+      <p>I've paid for 3 other trading courses. <strong>TOA is the only one with live trades, not just theory.</strong> When you watch someone trade in real-time and explain every decision — it actually sticks.</p>
+      <div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Khalil B.</div><div class="testi-role">TOA Member · Detroit, MI</div></div></div>
+    </div>
+    <div class="testi-carousel-card" data-idx="4">
+      <div class="testi-stars">★★★★★</div>
+      <p>The psychology piece is where TOA is different. <strong>I used to revenge trade and blow up accounts.</strong> After Niiko's mindset modules, I finally have discipline. That's priceless.</p>
+      <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Simone R.</div><div class="testi-role">TOA Member · Broward, FL</div></div></div>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots">
+      <button class="carousel-dot active" data-to="0"></button>
+      <button class="carousel-dot" data-to="1"></button>
+      <button class="carousel-dot" data-to="2"></button>
+      <button class="carousel-dot" data-to="3"></button>
+      <button class="carousel-dot" data-to="4"></button>
+    </div>
+  </div>
+
   <div class="testi-grid">
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
@@ -2644,35 +2947,27 @@ line-height: 1;
 
 <!-- REFERRAL PROGRAM -->
 
-<section class="referral-section reveal">
+<section class="referral-section reveal" id="referral">
   <div class="section-eyebrow green">✦ Earn With TOA</div>
   <h2>Get Paid to Share<br><em>What Actually Works</em></h2>
   <p class="referral-lead">Refer someone to TOA and earn <strong>25% of their monthly membership</strong> — every single month they stay active. You don't have to be a member. You don't need trading experience. You just need a link and someone who needs this community.</p>
 
-  <div class="ref-earnings">
-    <div class="ref-earn-card">
-      <div class="ref-earn-count">1</div>
-      <div class="ref-earn-label">referral</div>
-      <div class="ref-earn-amount">~$25</div>
-      <div class="ref-earn-period">every month they stay</div>
+  <!-- INTERACTIVE EARNINGS CALCULATOR -->
+  <div class="earnings-calc-widget reveal-scale">
+    <div class="calc-title">Drag to calculate your monthly earnings</div>
+    <div class="calc-display" id="calcDisplay">~$25</div>
+    <div class="calc-display-sub" id="calcSub">per month — from <strong id="calcCount">1</strong> referral staying active</div>
+    <div class="calc-slider-wrap">
+      <input type="range" class="calc-slider" id="earningsSlider" min="1" max="50" value="1">
+      <div class="calc-slider-labels">
+        <span>1 referral</span>
+        <span>10</span>
+        <span>25</span>
+        <span>50 referrals</span>
+      </div>
     </div>
-    <div class="ref-earn-card">
-      <div class="ref-earn-count">5</div>
-      <div class="ref-earn-label">referrals</div>
-      <div class="ref-earn-amount">~$125</div>
-      <div class="ref-earn-period">per month, recurring</div>
-    </div>
-    <div class="ref-earn-card">
-      <div class="ref-earn-count">10</div>
-      <div class="ref-earn-label">referrals</div>
-      <div class="ref-earn-amount">~$250</div>
-      <div class="ref-earn-period">per month, just for sharing</div>
-    </div>
-    <div class="ref-earn-card">
-      <div class="ref-earn-count">20</div>
-      <div class="ref-earn-label">referrals</div>
-      <div class="ref-earn-amount">~$500</div>
-      <div class="ref-earn-period">per month, fully passive</div>
+    <div class="calc-breakdown">
+      <span id="calcRefs">1</span> referral × $99.99/mo × 25% = <span id="calcAmount">~$25</span>/mo · <span id="calcYearly">~$300</span>/yr
     </div>
   </div>
 
@@ -2880,11 +3175,11 @@ line-height: 1;
     }
   }
 
-  // ── SCROLL REVEAL ──
+  // ── SCROLL REVEAL (all types) ──
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-stagger').forEach(el => observer.observe(el));
 
   // Close modals on overlay click
   document.querySelectorAll('.modal-overlay').forEach(overlay => {
@@ -2974,6 +3269,153 @@ line-height: 1;
       idx++;
     }
     setTimeout(() => { showToast(); setInterval(showToast, 20000); }, 10000);
+  })();
+
+  // ── SCROLL PROGRESS BAR ──
+  (function() {
+    const bar = document.getElementById('progressBar');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  })();
+
+  // ── CURSOR GLOW ──
+  (function() {
+    const glow = document.getElementById('cursorGlow');
+    let visible = false;
+    document.addEventListener('mousemove', e => {
+      if (!visible) { glow.style.opacity = '1'; visible = true; }
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; visible = false; });
+  })();
+
+  // ── BUTTON RIPPLE ──
+  (function() {
+    function addRipple(e) {
+      const btn = e.currentTarget;
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      const rip = document.createElement('span');
+      rip.className = 'ripple';
+      rip.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+      btn.appendChild(rip);
+      setTimeout(() => rip.remove(), 700);
+    }
+    document.querySelectorAll('button, .btn-primary, .btn-ghost, .nav-cta, .plan-cta, .sticky-cta, .add-btn, .coach-book, .faq-q').forEach(btn => {
+      const pos = getComputedStyle(btn).position;
+      if (pos === 'static') btn.style.position = 'relative';
+      btn.style.overflow = 'hidden';
+      btn.addEventListener('click', addRipple);
+    });
+  })();
+
+  // ── MAGNETIC EFFECT ON PRIMARY BUTTONS ──
+  (function() {
+    const targets = document.querySelectorAll('.btn-primary, .nav-cta, .plan-cta.primary, .sticky-cta');
+    targets.forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) * 0.22;
+        const dy = (e.clientY - cy) * 0.22;
+        btn.style.transform = `translate(${dx}px, ${dy}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  })();
+
+  // ── SECTION NAV DOTS ──
+  (function() {
+    const dots = document.querySelectorAll('.snav-dot');
+    const sections = Array.from(dots).map(d => document.getElementById(d.dataset.target)).filter(Boolean);
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const target = document.getElementById(dot.dataset.target);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          dots.forEach(d => d.classList.toggle('active', d.dataset.target === id));
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(s => io.observe(s));
+  })();
+
+  // ── TESTIMONIAL CAROUSEL ──
+  (function() {
+    const cards = document.querySelectorAll('.testi-carousel-card');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prev = document.getElementById('carouselPrev');
+    const next = document.getElementById('carouselNext');
+    let current = 0;
+    let autoTimer;
+
+    function goTo(n) {
+      cards[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + cards.length) % cards.length;
+      cards[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function startAuto() { autoTimer = setInterval(() => goTo(current + 1), 5000); }
+    function stopAuto() { clearInterval(autoTimer); }
+
+    prev && prev.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+    next && next.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+    dots.forEach(d => d.addEventListener('click', () => { stopAuto(); goTo(+d.dataset.to); startAuto(); }));
+    startAuto();
+  })();
+
+  // ── EARNINGS CALCULATOR ──
+  (function() {
+    const slider = document.getElementById('earningsSlider');
+    if (!slider) return;
+    const display = document.getElementById('calcDisplay');
+    const sub = document.getElementById('calcSub');
+    const refCount = document.getElementById('calcCount');
+    const calcRefs = document.getElementById('calcRefs');
+    const calcAmount = document.getElementById('calcAmount');
+    const calcYearly = document.getElementById('calcYearly');
+
+    function update() {
+      const refs = +slider.value;
+      const monthly = Math.round(refs * 99.99 * 0.25);
+      const yearly = monthly * 12;
+      const pct = ((refs - 1) / (50 - 1)) * 100;
+      slider.style.background = `linear-gradient(90deg, var(--green) ${pct}%, rgba(0,255,106,.15) ${pct}%)`;
+      display.textContent = '~$' + monthly.toLocaleString();
+      refCount.textContent = refs;
+      calcRefs.textContent = refs;
+      calcAmount.textContent = '~$' + monthly.toLocaleString();
+      calcYearly.textContent = '~$' + yearly.toLocaleString();
+      sub.innerHTML = `per month — from <strong id="calcCount">${refs}</strong> referral${refs !== 1 ? 's' : ''} staying active`;
+    }
+
+    slider.addEventListener('input', update);
+    update();
+  })();
+
+  // ── TICKER PAUSE ON HOVER ──
+  (function() {
+    const track = document.querySelector('.ticker-track');
+    if (!track) return;
+    const wrap = track.closest('.ticker-wrap');
+    wrap.addEventListener('mouseenter', () => track.classList.add('paused'));
+    wrap.addEventListener('mouseleave', () => track.classList.remove('paused'));
   })();
 </script>
 
