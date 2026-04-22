@@ -93,17 +93,17 @@ display: flex;
 align-items: center;
 gap: .75rem;
 }
-.nav-logo img {
+.nav-logo svg {
 height: 44px;
 width: 44px;
 border-radius: 50%;
-object-fit: cover;
 filter: drop-shadow(0 0 8px var(--green));
+flex-shrink: 0;
 }
 .nav-logo span {
 font-family: ‘Bebas Neue’, sans-serif;
-font-size: 1.4rem;
-letter-spacing: .08em;
+font-size: 1.15rem;
+letter-spacing: .06em;
 color: var(--green);
 }
 .nav-cta {
@@ -2367,8 +2367,26 @@ line-height: 1;
 
 <nav>
   <div class="nav-logo">
-    <img src="/mnt/user-data/uploads/3E289D87-C73E-4116-B9AF-A6781D0B508B.jpeg" alt="TOA Logo" onerror="this.style.display='none'">
-    <span>T.O. Academy</span>
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Trading Options Academy Logo">
+      <!-- Outer circle -->
+      <circle cx="100" cy="100" r="93" fill="white" stroke="black" stroke-width="7"/>
+      <!-- Mortarboard board (rotated square) -->
+      <polygon points="100,22 148,46 100,60 52,46" fill="black"/>
+      <!-- Cap top -->
+      <rect x="91" y="16" width="18" height="10" rx="2" fill="black"/>
+      <!-- Tassel string -->
+      <line x1="148" y1="46" x2="148" y2="68" stroke="black" stroke-width="3.5"/>
+      <circle cx="148" cy="71" r="5" fill="black"/>
+      <!-- T.O. text -->
+      <text x="24" y="148" font-family="Georgia, 'Times New Roman', serif" font-size="90" font-weight="900" fill="black" letter-spacing="-2">T.O.</text>
+      <!-- Academy text -->
+      <text x="100" y="178" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="400" fill="black" text-anchor="middle" letter-spacing="1">Academy</text>
+      <!-- Green stock chart line -->
+      <polyline points="18,168 42,155 62,162 80,140 100,115 122,88 148,58 158,44" fill="none" stroke="#00cc52" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Arrowhead -->
+      <polygon points="158,44 149,57 163,53" fill="#00cc52"/>
+    </svg>
+    <span>Trading Options Academy</span>
   </div>
   <button class="nav-cta" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')">Enroll Now →</button>
 </nav>
@@ -3001,7 +3019,7 @@ line-height: 1;
 <!-- FOOTER -->
 
 <footer>
-  <div class="footer-logo">T.O. Academy</div>
+  <div class="footer-logo">Trading Options Academy</div>
   <p>© 2025 Trading Options Academy. All rights reserved.</p>
   <div class="footer-disclaimer">
     <strong>Educational Disclaimer:</strong> Trading Options Academy is an educational community, not a registered investment advisor. Options trading involves substantial risk and is not suitable for all investors. Past student results are individual experiences and do not guarantee future performance. Individual results will vary based on account size, effort, market conditions, and the consistency with which strategies are applied. You should never trade money you cannot afford to lose. By joining TOA, you acknowledge that you are responsible for your own trading decisions.
