@@ -2322,6 +2322,251 @@ line-height: 1;
 
 /* ── TICKER PAUSE ON HOVER ── */
 .ticker-track.paused { animation-play-state: paused; }
+
+/* ── LIVE SESSION COUNTDOWN ── */
+.session-section {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 3.5rem 8vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.session-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,255,106,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.session-eyebrow-line {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1rem;
+}
+.session-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  margin: 1.2rem 0;
+  flex-wrap: wrap;
+}
+.s-unit { text-align: center; }
+.s-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: var(--white);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 84px; height: 84px;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1;
+  box-shadow: inset 0 0 20px rgba(0,255,106,.05);
+  transition: color .3s;
+}
+.s-sep {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+.s-lbl {
+  font-size: .62rem;
+  color: var(--gray);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-top: .4rem;
+}
+.session-info-line {
+  color: var(--gray);
+  font-size: .92rem;
+  margin: .8rem 0 1.6rem;
+}
+.live-now-wrap {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.live-now-wrap.active { display: flex; }
+.live-pulse-ring {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 0 rgba(255,59,59,.5);
+  animation: livePulse 1.4s ease-in-out infinite;
+}
+@keyframes livePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255,59,59,.55); }
+  70%  { box-shadow: 0 0 0 18px rgba(255,59,59,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,59,59,0); }
+}
+.live-now-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--green);
+  letter-spacing: .04em;
+  text-shadow: 0 0 30px rgba(0,255,106,.4);
+}
+.live-now-sub { color: var(--gray); font-size: .95rem; }
+@media (max-width: 480px) { .s-num { width: 64px; height: 64px; font-size: 2.6rem; } }
+
+/* ── QUIZ ── */
+.quiz-section {
+  padding: 7rem 8vw;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+.quiz-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,255,106,.06) 0%, transparent 55%);
+  pointer-events: none;
+}
+.quiz-wrap {
+  max-width: 660px;
+  margin: 0 auto;
+  position: relative;
+}
+.quiz-progress {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 2.5rem;
+}
+.quiz-prog-dot {
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+  background: var(--border);
+  transition: background .4s;
+}
+.quiz-prog-dot.done { background: var(--green); }
+.quiz-step { display: none; }
+.quiz-step.active { display: block; animation: fadeUp .35s ease both; }
+.quiz-q-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.05;
+  margin-bottom: 1.8rem;
+  color: var(--white);
+}
+.quiz-options { display: flex; flex-direction: column; gap: .7rem; }
+.quiz-opt {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .15s;
+  text-align: left;
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-size: .97rem;
+  line-height: 1.45;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.quiz-opt:hover {
+  border-color: rgba(0,255,106,.5);
+  background: rgba(0,255,106,.04);
+  transform: translateX(5px);
+}
+.quiz-opt.selected {
+  border-color: var(--green);
+  background: rgba(0,255,106,.1);
+}
+.quiz-opt-letter {
+  width: 30px; height: 30px;
+  border-radius: 6px;
+  background: rgba(0,255,106,.08);
+  border: 1px solid rgba(0,255,106,.3);
+  color: var(--green);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s;
+}
+.quiz-opt.selected .quiz-opt-letter { background: var(--green); color: var(--black); }
+
+/* Quiz Result */
+.quiz-result { display: none; text-align: center; }
+.quiz-result.active { display: block; animation: fadeUp .45s ease both; }
+.res-badge {
+  display: inline-block;
+  background: var(--green);
+  color: var(--black);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: .85rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: .4rem 1.4rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+.res-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
+}
+.res-headline em { font-style: normal; color: var(--green); }
+.res-body {
+  font-size: 1.05rem;
+  color: var(--gray);
+  line-height: 1.72;
+  max-width: 520px;
+  margin: 0 auto 2rem;
+}
+.res-body strong { color: var(--white); }
+.res-breakdown {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.res-point {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .8rem 1.1rem;
+  font-size: .85rem;
+  color: var(--gray);
+  text-align: left;
+  min-width: 120px;
+}
+.res-point strong {
+  color: var(--green);
+  display: block;
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: .25rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+}
+.quiz-retake {
+  background: none; border: none;
+  color: var(--gray); font-size: .82rem;
+  cursor: pointer; text-decoration: underline;
+  display: block; margin: 1rem auto 0;
+}
 </style>
 
 </head>
@@ -2453,6 +2698,35 @@ line-height: 1;
       <div class="win-card"><div class="amount">+$1,550</div><div class="ticker-name">AMZN Earnings Play</div><div class="person">Khalil B. — Detroit, MI</div><div class="stars">★★★★★</div></div>
       <div class="win-card"><div class="amount">+$620</div><div class="ticker-name">QQQ Calls</div><div class="person">Tiffany N. — Jacksonville, FL</div><div class="stars">★★★★★</div></div>
     </div>
+  </div>
+</div>
+
+<!-- LIVE SESSION COUNTDOWN -->
+
+<div class="session-section reveal" id="live-session">
+  <div class="session-eyebrow-line" id="sessionEyebrow">✦ Next Live Session</div>
+
+  <!-- LIVE NOW STATE -->
+  <div class="live-now-wrap" id="liveNowWrap">
+    <div class="live-pulse-ring"></div>
+    <div class="live-now-text">🔴 Session Is Live Right Now</div>
+    <p class="live-now-sub">Niiko is trading live · Mon–Fri · 9:20 AM – 4:00 PM EST</p>
+    <button class="btn-primary" onclick="openModal('main')" style="margin-top:.5rem; font-size:1rem; padding:.9rem 2.2rem;">Join To Get In →</button>
+  </div>
+
+  <!-- COUNTDOWN STATE -->
+  <div id="countdownWrap">
+    <div class="session-timer">
+      <div class="s-unit"><div class="s-num" id="sDays">00</div><div class="s-lbl">Days</div></div>
+      <div class="s-sep">:</div>
+      <div class="s-unit"><div class="s-num" id="sHours">00</div><div class="s-lbl">Hours</div></div>
+      <div class="s-sep">:</div>
+      <div class="s-unit"><div class="s-num" id="sMins">00</div><div class="s-lbl">Mins</div></div>
+      <div class="s-sep">:</div>
+      <div class="s-unit"><div class="s-num" id="sSecs">00</div><div class="s-lbl">Secs</div></div>
+    </div>
+    <p class="session-info-line">Mon–Fri · 9:20 AM – 4:00 PM EST · Live on Zoom with Niiko</p>
+    <button class="btn-primary" onclick="openModal('main')" style="font-size:1rem; padding:.9rem 2.4rem;">Get Access Before the Next Session →</button>
   </div>
 </div>
 
@@ -2645,6 +2919,87 @@ line-height: 1;
       </div>
     </div>
   </div>
+</section>
+
+<!-- QUIZ -->
+
+<section class="quiz-section reveal" id="quiz">
+  <div style="text-align:center; margin-bottom:2.5rem;">
+    <div class="section-eyebrow green">✦ Find Out In 60 Seconds</div>
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(2.5rem,6vw,5rem); line-height:1; margin-bottom:.6rem;">Is TOA <em style="font-style:normal;color:var(--green)">Right</em> For You?</h2>
+    <p style="color:var(--gray); font-size:1rem; max-width:480px; margin:0 auto;">4 quick questions. Honest result. No fluff.</p>
+  </div>
+
+  <div class="quiz-wrap">
+    <!-- Progress dots -->
+    <div class="quiz-progress">
+      <div class="quiz-prog-dot done"></div>
+      <div class="quiz-prog-dot"></div>
+      <div class="quiz-prog-dot"></div>
+      <div class="quiz-prog-dot"></div>
+    </div>
+
+    <div id="quizSteps">
+
+      <!-- Step 1 -->
+      <div class="quiz-step active" data-q="0">
+        <div class="quiz-q-text">Where are you with options right now?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="quizAnswer(0,0)"><span class="quiz-opt-letter">A</span>Total beginner — I've never placed an options trade</button>
+          <button class="quiz-opt" onclick="quizAnswer(0,1)"><span class="quiz-opt-letter">B</span>I've tried a few trades but I'm inconsistent</button>
+          <button class="quiz-opt" onclick="quizAnswer(0,2)"><span class="quiz-opt-letter">C</span>I'm active but losing more than I'm making</button>
+          <button class="quiz-opt" onclick="quizAnswer(0,3)"><span class="quiz-opt-letter">D</span>I'm profitable but want a real edge and community</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" data-q="1">
+        <div class="quiz-q-text">What's your biggest challenge right now?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="quizAnswer(1,0)"><span class="quiz-opt-letter">A</span>I don't fully understand how options actually work</button>
+          <button class="quiz-opt" onclick="quizAnswer(1,1)"><span class="quiz-opt-letter">B</span>I can't find consistent, high-probability setups</button>
+          <button class="quiz-opt" onclick="quizAnswer(1,2)"><span class="quiz-opt-letter">C</span>I know what to do but I panic, revenge trade, or hold too long</button>
+          <button class="quiz-opt" onclick="quizAnswer(1,3)"><span class="quiz-opt-letter">D</span>I trade alone — no community, no accountability, no one to learn from</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="quiz-step" data-q="2">
+        <div class="quiz-q-text">How serious are you about changing your financial situation?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="quizAnswer(2,0)"><span class="quiz-opt-letter">A</span>Just exploring for now</button>
+          <button class="quiz-opt" onclick="quizAnswer(2,1)"><span class="quiz-opt-letter">B</span>Pretty serious — I've lost money and I'm done guessing</button>
+          <button class="quiz-opt" onclick="quizAnswer(2,2)"><span class="quiz-opt-letter">C</span>100% committed — I'm ready to invest in my education right now</button>
+          <button class="quiz-opt" onclick="quizAnswer(2,3)"><span class="quiz-opt-letter">D</span>I needed this yesterday. The market doesn't wait.</button>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="quiz-step" data-q="3">
+        <div class="quiz-q-text">How much time can you commit each week?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="quizAnswer(3,0)"><span class="quiz-opt-letter">A</span>Under 2 hours — I'm busy but want to learn</button>
+          <button class="quiz-opt" onclick="quizAnswer(3,1)"><span class="quiz-opt-letter">B</span>2–5 hours — I'll make time when I can</button>
+          <button class="quiz-opt" onclick="quizAnswer(3,2)"><span class="quiz-opt-letter">C</span>5–10 hours — trading is a real priority for me</button>
+          <button class="quiz-opt" onclick="quizAnswer(3,3)"><span class="quiz-opt-letter">D</span>As much as it takes. I'm all in.</button>
+        </div>
+      </div>
+
+    </div><!-- /quizSteps -->
+
+    <!-- Result -->
+    <div class="quiz-result" id="quizResult">
+      <div class="res-badge" id="resBadge"></div>
+      <div class="res-headline" id="resHeadline"></div>
+      <p class="res-body" id="resBody"></p>
+      <div class="res-breakdown" id="resBreakdown"></div>
+      <button class="btn-primary" onclick="window.open('https://whop.com/checkout/plan_SNov04fwAEwNb/','_blank')" style="font-size:1.1rem; padding:1rem 2.8rem;">
+        Secure My Spot in TOA →
+      </button>
+      <button class="quiz-retake" onclick="retakeQuiz()">Retake the quiz</button>
+    </div>
+
+  </div><!-- /quiz-wrap -->
 </section>
 
 <!-- PRICING -->
@@ -3434,6 +3789,195 @@ line-height: 1;
     const wrap = track.closest('.ticker-wrap');
     wrap.addEventListener('mouseenter', () => track.classList.add('paused'));
     wrap.addEventListener('mouseleave', () => track.classList.remove('paused'));
+  })();
+
+  // ── LIVE SESSION COUNTDOWN ──
+  (function() {
+    const SESSION_START_H = 9,  SESSION_START_M = 20; // 9:20 AM EST
+    const SESSION_END_H   = 16, SESSION_END_M   = 0;  // 4:00 PM EST
+
+    function getNYDate() {
+      // Trick: parse now as NY wall-clock time in the local JS engine
+      // This lets us call .getDay(), .getHours() etc. and get NY values
+      return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    }
+
+    function getSessionState() {
+      const now   = new Date();
+      const nyNow = getNYDate();
+      const day   = nyNow.getDay(); // 0=Sun … 6=Sat
+      const totalMins = nyNow.getHours() * 60 + nyNow.getMinutes();
+      const startMins = SESSION_START_H * 60 + SESSION_START_M;
+      const endMins   = SESSION_END_H   * 60 + SESSION_END_M;
+      const isWeekday = day >= 1 && day <= 5;
+
+      // Currently live?
+      if (isWeekday && totalMins >= startMins && totalMins < endMins) {
+        return { live: true };
+      }
+
+      // Build next session start as a "NY wall-clock" Date
+      let target = new Date(nyNow);
+      target.setHours(SESSION_START_H, SESSION_START_M, 0, 0);
+
+      // If today is weekday but we're before session, use today's start
+      if (isWeekday && totalMins < startMins) {
+        // target is already today at 9:20 AM (NY interpreted as local)
+      } else {
+        // Move to next day, skip weekends
+        target.setDate(target.getDate() + 1);
+        while (target.getDay() === 0 || target.getDay() === 6) {
+          target.setDate(target.getDate() + 1);
+        }
+      }
+
+      // Correct from "NY as local" representation back to real UTC
+      // offset = (NY wall-clock timestamp) - (real UTC timestamp)
+      const offset = nyNow.getTime() - now.getTime();
+      const nextUTC = new Date(target.getTime() - offset);
+
+      return { live: false, nextTime: nextUTC };
+    }
+
+    function pad(n) { return String(Math.max(0, n)).padStart(2, '0'); }
+
+    function tick() {
+      const state     = getSessionState();
+      const liveWrap  = document.getElementById('liveNowWrap');
+      const cdWrap    = document.getElementById('countdownWrap');
+      const eyebrow   = document.getElementById('sessionEyebrow');
+      if (!liveWrap || !cdWrap) return;
+
+      if (state.live) {
+        liveWrap.classList.add('active');
+        cdWrap.style.display = 'none';
+        eyebrow.textContent  = '🔴 Live Right Now';
+        return;
+      }
+
+      liveWrap.classList.remove('active');
+      cdWrap.style.display = 'block';
+      eyebrow.textContent  = '✦ Next Live Session';
+
+      const diff = state.nextTime - new Date();
+      if (diff <= 0) { tick(); return; }
+
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000)  / 60000);
+      const secs  = Math.floor((diff % 60000)    / 1000);
+
+      document.getElementById('sDays').textContent  = pad(days);
+      document.getElementById('sHours').textContent = pad(hours);
+      document.getElementById('sMins').textContent  = pad(mins);
+      document.getElementById('sSecs').textContent  = pad(secs);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // ── QUIZ ──
+  (function() {
+    const answers = [];
+
+    const results = {
+      beginner: {
+        badge:    '✅ Strong Fit — TOA Was Made For This',
+        headline: 'You Don\'t Need Experience. You Need the Right <em>Foundation.</em>',
+        body:     'TOA starts from absolute zero — what options are, how they\'re priced, what moves them, and how to trade them without gambling. <strong>Hundreds of members started exactly where you are and are now trading with real confidence and a real system.</strong> You\'re in the right place.',
+        points:   ['Beginner-friendly curriculum', 'Live sessions from foundations up', 'Community at every level']
+      },
+      struggling: {
+        badge:    '✅ Strong Fit — You Have the Drive',
+        headline: 'The Problem Isn\'t Effort. It\'s Missing the Right <em>System.</em>',
+        body:     'Most traders who struggle aren\'t lacking discipline — they\'re missing a proven framework and real-time accountability. <strong>TOA gives you live trades, psychology coaching, and 1,000+ traders learning alongside you.</strong> That\'s what turns inconsistency into a repeatable edge.',
+        points:   ['Live 0DTE strategy sessions', 'Psychology-first framework', 'Active Discord community']
+      },
+      serious: {
+        badge:    '🏆 Perfect Fit — This Is Your Moment',
+        headline: 'You\'re Ready. The Seat Is <em>Waiting.</em>',
+        body:     'Traders who commit fully are the ones who actually change their accounts. TOA gives you the live environment, the psychology framework to stop emotional trading, and a community that\'s dead serious about winning. <strong>Everything you need is already built. You just need to step in.</strong>',
+        points:   ['Immediate full access', 'Next session starts soon', 'No experience required']
+      }
+    };
+
+    function getResultKey() {
+      const seriousness = answers[2] !== undefined ? answers[2] : 0;
+      const experience  = answers[0] !== undefined ? answers[0] : 0;
+      if (seriousness >= 2) return 'serious';
+      if (experience <= 1)  return 'beginner';
+      return 'struggling';
+    }
+
+    function renderProgress(stepIdx) {
+      document.querySelectorAll('.quiz-prog-dot').forEach((dot, i) => {
+        dot.classList.toggle('done', i <= stepIdx);
+      });
+    }
+
+    function showStep(idx) {
+      document.querySelectorAll('.quiz-step').forEach((el, i) => {
+        el.classList.toggle('active', i === idx);
+      });
+      renderProgress(idx);
+    }
+
+    function showResult() {
+      document.getElementById('quizSteps').style.display = 'none';
+      document.querySelectorAll('.quiz-prog-dot').forEach(d => d.classList.add('done'));
+
+      const key = getResultKey();
+      const r   = results[key];
+
+      document.getElementById('resBadge').textContent    = r.badge;
+      document.getElementById('resHeadline').innerHTML   = r.headline;
+      document.getElementById('resBody').innerHTML       = r.body;
+
+      const challengeLabels = ['Foundations', 'Finding setups', 'Psychology', 'Community'];
+      const experienceLabels = ['Beginner', 'Getting started', 'Active trader', 'Experienced'];
+      const timeLabels = ['Under 2 hrs/wk', '2–5 hrs/wk', '5–10 hrs/wk', 'All in'];
+
+      const breakdown = document.getElementById('resBreakdown');
+      breakdown.innerHTML = [
+        { label: 'Your Level',     val: experienceLabels[answers[0] || 0] },
+        { label: 'Main Challenge', val: challengeLabels[answers[1]  || 0] },
+        { label: 'Time Available', val: timeLabels[answers[3]       || 0] },
+      ].map(p => `<div class="res-point"><strong>${p.label}</strong>${p.val}</div>`).join('');
+
+      const resultEl = document.getElementById('quizResult');
+      resultEl.classList.add('active');
+    }
+
+    window.quizAnswer = function(qIdx, aIdx) {
+      answers[qIdx] = aIdx;
+
+      // Visual: mark selected
+      document.querySelectorAll(`[data-q="${qIdx}"] .quiz-opt`).forEach((btn, i) => {
+        btn.classList.toggle('selected', i === aIdx);
+      });
+
+      // Advance after brief pause so user sees selection
+      setTimeout(() => {
+        const totalSteps = document.querySelectorAll('.quiz-step').length;
+        if (qIdx + 1 < totalSteps) {
+          showStep(qIdx + 1);
+        } else {
+          showResult();
+        }
+      }, 340);
+    };
+
+    window.retakeQuiz = function() {
+      answers.length = 0;
+      document.getElementById('quizSteps').style.display = 'block';
+      document.getElementById('quizResult').classList.remove('active');
+      document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+      showStep(0);
+    };
+
+    // Init first step
+    showStep(0);
   })();
 </script>
 
